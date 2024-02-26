@@ -3,6 +3,29 @@ import { createRoot } from "react-dom/client";
 
 import "./styles.css";
 
+const socialMedia = [
+  {
+    icon: "fa-facebook",
+    href: "https://www.facebook.com/fahry.ibra.1/",
+  },
+  {
+    icon: "fa-instagram",
+    href: "https://www.instagram.com/fahryibrahim29/",
+  },
+  {
+    icon: "fa-twitter",
+    href: "https://twitter.com/FahryIbrahim26",
+  },
+  {
+    icon: "fa-linkedin",
+    href: "https://www.linkedin.com/in/fahry-ibrahim-8b798a266/",
+  },
+  {
+    icon: "fa-github",
+    href: "https://github.com/FahryIbrahim",
+  },
+];
+
 function App() {
   return (
     <div className="card">
@@ -18,25 +41,29 @@ function App() {
   );
 }
 
-function SocialButton({ icon }) {
+function SocialButton({ icon, link }) {
   return (
-    <button>
+    <button onClick={() => window.open(link, "_blank")}>
       <i className={`fa-brands ${icon}`}></i>
     </button>
   );
 }
 
 function Header() {
+  const middleIndex = Math.floor(socialMedia.length / 2);
+  const socialLeft = socialMedia.slice(0, middleIndex);
+  const socialRight = socialMedia.slice(middleIndex);
   return (
     <>
       <div className="social-buttons">
-        <SocialButton icon="fa-facebook" />
-        <SocialButton icon="fa-instagram" />
-        <SocialButton icon="fa-twitter" />
+        {socialLeft.map((data, index) => (
+          <SocialButton icon={data.icon} link={data.href} />
+        ))}
       </div>
       <div className="social-buttons right">
-        <SocialButton icon="fa-linkedin" />
-        <SocialButton icon="fa-github" />
+        {socialRight.map((data, index) => (
+          <SocialButton icon={data.icon} link={data.href} />
+        ))}
       </div>
     </>
   );
@@ -60,7 +87,7 @@ function Biodata() {
       </p>
       <p>
         I have a black cat named Black Cat. He is an Engineer and his name
-        perfectly matches his sleek and mysterious appearance. 
+        perfectly matches his sleek and mysterious appearance.
       </p>
     </div>
   );
@@ -69,11 +96,9 @@ function Biodata() {
 function Badge({ text }) {
   return (
     <button>
-      <div className="height">
-        {text}
-      </div>
+      <div className="height">{text}</div>
     </button>
-  )
+  );
 }
 
 function Highlight() {

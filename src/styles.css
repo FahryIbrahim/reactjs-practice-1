@@ -150,10 +150,12 @@ body {
 .card .bottom .buttons button {
   display: flex;
   justify-content: center;
+  
   align-items: center;
   margin-right: 0.5rem;
   color: #1d252c;
   font-size: 0.7rem;
+  padding: 0.5rem;
   background-color: #1261a0;
   border-radius: 1em;
 }
